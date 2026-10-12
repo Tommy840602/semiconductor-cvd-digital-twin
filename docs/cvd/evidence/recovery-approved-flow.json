@@ -1,0 +1,601 @@
+{
+  "id": "3e02843b-eeae-4d99-b751-d9050e992264",
+  "wafer_id": "RECOVERY-4f5e4f1-W01",
+  "owner_id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+  "revision": 3,
+  "status": "completed",
+  "reason": "\u54c1\u8cea\u5408\u683c",
+  "created_at": "2026-09-16T01:58:52.689+00:00",
+  "updated_at": "2026-09-16T01:59:03.075+00:00",
+  "versions": [
+    {
+      "revision": 1,
+      "prescription": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 1,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "author": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 1
+      },
+      "created_at": "2026-09-16T01:58:52.689+00:00"
+    },
+    {
+      "revision": 2,
+      "prescription": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 2,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "author": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "created_at": "2026-09-16T01:58:53.441+00:00"
+    },
+    {
+      "revision": 3,
+      "prescription": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 3,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "author": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "created_at": "2026-09-16T01:58:55.556+00:00"
+    }
+  ],
+  "events": [
+    {
+      "revision": 1,
+      "action": "draft",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 1
+      },
+      "details": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 1,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "time": "2026-09-16T01:58:52.689+00:00"
+    },
+    {
+      "revision": 1,
+      "action": "submitted",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 1
+      },
+      "details": {},
+      "time": "2026-09-16T01:58:52.730+00:00"
+    },
+    {
+      "revision": 1,
+      "action": "returned",
+      "actor": {
+        "id": "15cc4d17-8cb8-4960-9f4c-d9709529a138",
+        "role": "Engineer",
+        "username": "recovery.pe",
+        "department": "PE",
+        "authVersion": 1
+      },
+      "details": {
+        "reason": "\u8acb\u52a0\u5165\u5439\u6383\u4e26\u78ba\u8a8d\u7cbe\u78ba\u79d2\u6578"
+      },
+      "time": "2026-09-16T01:58:53.431+00:00"
+    },
+    {
+      "revision": 1,
+      "action": "superseded",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {
+        "nextRevision": 2
+      },
+      "time": "2026-09-16T01:58:53.441+00:00"
+    },
+    {
+      "revision": 2,
+      "action": "draft",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 2,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "time": "2026-09-16T01:58:53.441+00:00"
+    },
+    {
+      "revision": 2,
+      "action": "submitted",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {},
+      "time": "2026-09-16T01:58:53.453+00:00"
+    },
+    {
+      "revision": 2,
+      "action": "approved",
+      "actor": {
+        "id": "15cc4d17-8cb8-4960-9f4c-d9709529a138",
+        "role": "Engineer",
+        "username": "recovery.pe",
+        "department": "PE",
+        "authVersion": 1
+      },
+      "details": {
+        "executionId": "e3c93213-9ac3-4f37-8245-ffe53be441d0"
+      },
+      "time": "2026-09-16T01:58:53.464+00:00"
+    },
+    {
+      "revision": 2,
+      "action": "withdrawn",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {
+        "reason": "\u5c1a\u672a\u767c\u5e03\uff0c\u4ea4\u6613\u5df2\u64a4\u92b7\u610f\u5716"
+      },
+      "time": "2026-09-16T01:58:55.543+00:00"
+    },
+    {
+      "revision": 2,
+      "action": "superseded",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {
+        "nextRevision": 3
+      },
+      "time": "2026-09-16T01:58:55.556+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "draft",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {
+        "pmId": "PM1",
+        "lotId": "RECOVERY-4f5e4f1",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 3,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "totalSeconds": 4,
+        "modelRevision": "synthetic-tin-v1",
+        "troubleshooting": "EE \u5df2\u6aa2\u67e5\u6c89\u7a4d\u504f\u5dee\u4e26\u78ba\u8a8d\u88dc\u505a\u79d2\u6578",
+        "estimatedDeltaNm": 1.5,
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224,
+        "baselineThicknessNm": 1.0125804310103221
+      },
+      "time": "2026-09-16T01:58:55.556+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "submitted",
+      "actor": {
+        "id": "3e43bf44-b1de-4613-89a9-0e9f346170af",
+        "role": "Engineer",
+        "username": "recovery.ee",
+        "department": "EE",
+        "authVersion": 3
+      },
+      "details": {},
+      "time": "2026-09-16T01:58:55.570+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "approved",
+      "actor": {
+        "id": "15cc4d17-8cb8-4960-9f4c-d9709529a138",
+        "role": "Engineer",
+        "username": "recovery.pe",
+        "department": "PE",
+        "authVersion": 1
+      },
+      "details": {
+        "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c"
+      },
+      "time": "2026-09-16T01:58:55.582+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "published",
+      "actor": null,
+      "details": {
+        "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c"
+      },
+      "time": "2026-09-16T01:58:58.038+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "executing",
+      "actor": null,
+      "details": {
+        "pmId": "PM1",
+        "reason": "",
+        "status": "executing",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 3,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "startedAt": "2026-09-16T01:58:58.776486113Z",
+        "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224
+      },
+      "time": "2026-09-16T01:59:00.056+00:00"
+    },
+    {
+      "revision": 3,
+      "action": "completed",
+      "actor": null,
+      "details": {
+        "pmId": "PM1",
+        "reason": "\u54c1\u8cea\u5408\u683c",
+        "result": {
+          "phase": "purge",
+          "quality": "pass",
+          "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+          "runProgress": 1,
+          "stepSeconds": [
+            0,
+            0,
+            3,
+            1
+          ],
+          "thicknessNm": 2.5242517683724044,
+          "processRunId": "RECOVERY-4f5e4f1-W01/recovery/24a88a00-6328-4704-9862-0e0b6c68d58c",
+          "completedTick": 47,
+          "modelRevision": "synthetic-tin-v1",
+          "phaseProgress": 1,
+          "uniformityPct": 1.4394466159981387,
+          "elapsedSeconds": 4,
+          "heaterPowerPct": 36.97514968278993,
+          "durationSeconds": 4,
+          "deltaThicknessNm": 1.5116713373620823,
+          "recoveryRevision": 3,
+          "recoveryRequestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+          "sampleThicknessNm": [
+            2.5128288046803604,
+            2.5413862139104695,
+            2.5699436231405786,
+            2.497273109822359,
+            2.499827090308253
+          ],
+          "targetThicknessNm": 2.5125804310103224,
+          "telemetryRevision": 1,
+          "sourceProcessRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+          "uniformityLimitPct": 5,
+          "baselineThicknessNm": 1.0125804310103221,
+          "phaseElapsedSeconds": 1,
+          "phaseDurationSeconds": 1,
+          "temperatureDeviationC": -51.351541568730966,
+          "thicknessTolerancePct": 10,
+          "depositionRateNmPerSecond": 0,
+          "rootDepositionRateNmPerSecond": 0.5
+        },
+        "status": "completed",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 3,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "startedAt": "2026-09-16T01:58:58.776486113Z",
+        "finishedAt": "2026-09-16T01:59:01.776488696Z",
+        "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224
+      },
+      "time": "2026-09-16T01:59:03.075+00:00"
+    }
+  ],
+  "intents": [
+    {
+      "execution_id": "e3c93213-9ac3-4f37-8245-ffe53be441d0",
+      "revision": 2,
+      "published": false,
+      "approved_by": {
+        "id": "15cc4d17-8cb8-4960-9f4c-d9709529a138",
+        "role": "Engineer",
+        "username": "recovery.pe",
+        "department": "PE",
+        "authVersion": 1
+      },
+      "result": null
+    },
+    {
+      "execution_id": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+      "revision": 3,
+      "published": true,
+      "approved_by": {
+        "id": "15cc4d17-8cb8-4960-9f4c-d9709529a138",
+        "role": "Engineer",
+        "username": "recovery.pe",
+        "department": "PE",
+        "authVersion": 1
+      },
+      "result": {
+        "pmId": "PM1",
+        "reason": "\u54c1\u8cea\u5408\u683c",
+        "result": {
+          "phase": "purge",
+          "quality": "pass",
+          "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+          "runProgress": 1,
+          "stepSeconds": [
+            0,
+            0,
+            3,
+            1
+          ],
+          "thicknessNm": 2.5242517683724044,
+          "processRunId": "RECOVERY-4f5e4f1-W01/recovery/24a88a00-6328-4704-9862-0e0b6c68d58c",
+          "completedTick": 47,
+          "modelRevision": "synthetic-tin-v1",
+          "phaseProgress": 1,
+          "uniformityPct": 1.4394466159981387,
+          "elapsedSeconds": 4,
+          "heaterPowerPct": 36.97514968278993,
+          "durationSeconds": 4,
+          "deltaThicknessNm": 1.5116713373620823,
+          "recoveryRevision": 3,
+          "recoveryRequestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+          "sampleThicknessNm": [
+            2.5128288046803604,
+            2.5413862139104695,
+            2.5699436231405786,
+            2.497273109822359,
+            2.499827090308253
+          ],
+          "targetThicknessNm": 2.5125804310103224,
+          "telemetryRevision": 1,
+          "sourceProcessRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+          "uniformityLimitPct": 5,
+          "baselineThicknessNm": 1.0125804310103221,
+          "phaseElapsedSeconds": 1,
+          "phaseDurationSeconds": 1,
+          "temperatureDeviationC": -51.351541568730966,
+          "thicknessTolerancePct": 10,
+          "depositionRateNmPerSecond": 0,
+          "rootDepositionRateNmPerSecond": 0.5
+        },
+        "status": "completed",
+        "waferId": "RECOVERY-4f5e4f1-W01",
+        "baseline": [
+          1.0079982139574795,
+          1.0194537565895863,
+          1.0309092992216937,
+          1.0017581897248187,
+          1.0027826955580328
+        ],
+        "revision": 3,
+        "rootRate": 0.5,
+        "requestId": "3e02843b-eeae-4d99-b751-d9050e992264",
+        "startedAt": "2026-09-16T01:58:58.776486113Z",
+        "finishedAt": "2026-09-16T01:59:01.776488696Z",
+        "executionId": "24a88a00-6328-4704-9862-0e0b6c68d58c",
+        "sourceRunId": "RECOVERY-4f5e4f1-W01/1/synthetic-tin-v1",
+        "stepSeconds": [
+          0,
+          0,
+          3,
+          1
+        ],
+        "exceptionVersion": 1,
+        "targetThicknessNm": 2.5125804310103224
+      }
+    }
+  ]
+}

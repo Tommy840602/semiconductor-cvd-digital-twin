@@ -1,0 +1,14 @@
+# Optional activation overlay. Do not include until the owner authorizes Outlook connection.
+services:
+  backend:
+    environment:
+      OUTLOOK_CLIENT_SECRET_FILE: /run/secrets/outlook_client_secret
+      EMAIL_TOKEN_KEY_FILE: /run/secrets/email_token_key
+    secrets:
+      - outlook_client_secret
+      - email_token_key
+secrets:
+  outlook_client_secret:
+    file: ${OUTLOOK_CLIENT_SECRET_PATH:?Set the secret file path outside the repository}
+  email_token_key:
+    file: ${EMAIL_TOKEN_KEY_PATH:?Set the encryption key file path outside the repository}

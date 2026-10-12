@@ -1,0 +1,345 @@
+name: cvd-twin
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment: &db-env
+      POSTGRES_DB: cvd
+      POSTGRES_USER: cvd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cvd-local}
+    volumes: [pg-data:/var/lib/postgresql/data]
+    healthcheck:
+      {
+        test: [CMD-SHELL, pg_isready -U cvd],
+        interval: 3s,
+        timeout: 3s,
+        retries: 30,
+      }
+  timescaledb:
+    image: timescale/timescaledb:2.28.2-pg16@sha256:ba149561ad4ddff5940d6eb0a0df60aefd1355cee1a450928f271267038fc888
+    environment: *db-env
+    volumes: [ts-data:/var/lib/postgresql/data]
+    healthcheck:
+      {
+        test: [CMD-SHELL, pg_isready -U cvd],
+        interval: 3s,
+        timeout: 3s,
+        retries: 30,
+      }
+  redis:
+    image: redis:7.4-alpine
+    command: redis-server --appendonly yes
+    volumes: [redis-data:/data]
+    healthcheck:
+      { test: [CMD, redis-cli, ping], interval: 3s, timeout: 3s, retries: 30 }
+  mqtt:
+    image: eclipse-mosquitto:2.0
+    volumes:
+      [
+        ./deployment/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro,
+        mqtt-data:/mosquitto/data,
+      ]
+    healthcheck:
+      {
+        test: [CMD-SHELL, "mosquitto_pub -h localhost -t health -m ok"],
+        interval: 3s,
+        timeout: 3s,
+        retries: 30,
+      }
+  kafka:
+    image: apache/kafka:3.7.1
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_LISTENERS: PLAINTEXT://:9092,CONTROLLER://:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+      CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
+    volumes: [kafka-data:/var/lib/kafka/data]
+    healthcheck:
+      {
+        test:
+          [
+            CMD-SHELL,
+            "/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list",
+          ],
+        interval: 10s,
+        timeout: 10s,
+        retries: 30,
+      }
+  simulator: &simulator
+    image: cvd-twin-simulator
+    build: {context: ., dockerfile: simulator/Dockerfile}
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-01
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    secrets: [recovery_key]
+    volumes: [sim-data:/data]
+    healthcheck:
+      {
+        test: [CMD-SHELL, "wget -qO- http://localhost:8081/health"],
+        interval: 3s,
+        timeout: 3s,
+        retries: 30,
+      }
+  gateway: &gateway
+    image: cvd-twin-gateway
+    build: {context: ., dockerfile: gateway/Dockerfile}
+    environment:
+      {
+        EQUIPMENT_ID: TEL-CVDTIN-08A-01,
+        OPC_ENDPOINT: "opc.tcp://simulator:4840",
+        MQTT_URL: "tcp://mqtt:1883",
+        DATA_DIR: /data,
+      }
+    volumes: [gateway-data:/data]
+    depends_on:
+      {
+        simulator: { condition: service_healthy },
+        mqtt: { condition: service_healthy },
+      }
+    healthcheck:
+      {
+        test: [CMD-SHELL, "wget -qO- http://localhost:8082/health"],
+        interval: 3s,
+        timeout: 3s,
+        retries: 30,
+      }
+  simulator-02:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-02
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-02-data:/data]
+  gateway-02:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-02
+      OPC_ENDPOINT: opc.tcp://simulator-02:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-02-data:/data]
+    depends_on:
+      simulator-02: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-03:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-03
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-03-data:/data]
+  gateway-03:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-03
+      OPC_ENDPOINT: opc.tcp://simulator-03:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-03-data:/data]
+    depends_on:
+      simulator-03: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-04:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-04
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-04-data:/data]
+  gateway-04:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-04
+      OPC_ENDPOINT: opc.tcp://simulator-04:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-04-data:/data]
+    depends_on:
+      simulator-04: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-05:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-05
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-05-data:/data]
+  gateway-05:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-05
+      OPC_ENDPOINT: opc.tcp://simulator-05:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-05-data:/data]
+    depends_on:
+      simulator-05: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-06:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-06
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-06-data:/data]
+  gateway-06:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-06
+      OPC_ENDPOINT: opc.tcp://simulator-06:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-06-data:/data]
+    depends_on:
+      simulator-06: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-07:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-07
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-07-data:/data]
+  gateway-07:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-07
+      OPC_ENDPOINT: opc.tcp://simulator-07:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-07-data:/data]
+    depends_on:
+      simulator-07: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-08:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-08
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-08-data:/data]
+  gateway-08:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-08
+      OPC_ENDPOINT: opc.tcp://simulator-08:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-08-data:/data]
+    depends_on:
+      simulator-08: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-09:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-09
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-09-data:/data]
+  gateway-09:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-09
+      OPC_ENDPOINT: opc.tcp://simulator-09:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-09-data:/data]
+    depends_on:
+      simulator-09: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  simulator-10:
+    <<: *simulator
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-10
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+    volumes: [sim-10-data:/data]
+  gateway-10:
+    <<: *gateway
+    environment:
+      EQUIPMENT_ID: TEL-CVDTIN-08A-10
+      OPC_ENDPOINT: opc.tcp://simulator-10:4840
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes: [gateway-10-data:/data]
+    depends_on:
+      simulator-10: {condition: service_healthy}
+      mqtt: {condition: service_healthy}
+  backend:
+    build: ./backend
+    environment:
+      POSTGRES_URL: jdbc:postgresql://postgres:5432/cvd
+      TIMESCALE_URL: jdbc:postgresql://timescaledb:5432/cvd
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cvd-local}
+      MQTT_URL: tcp://mqtt:1883
+      MQTT_DATA_DIR: /data/mqtt
+      KAFKA_SERVERS: kafka:9092
+      REDIS_HOST: redis
+      CVD_RECOVERY_KEY_FILE: /run/secrets/recovery_key
+      CVD_BOOTSTRAP_PASSWORD_FILE: /run/secrets/leader_password
+      CVD_PUBLIC_ORIGIN: ${CVD_PUBLIC_ORIGIN:-}
+      EMAIL_ENABLED: ${EMAIL_ENABLED:-false}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-}
+      OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI:-}
+      OUTLOOK_CLIENT_ID: ${OUTLOOK_CLIENT_ID:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_API_KEY_FILE: ${OPENAI_API_KEY_FILE:-}
+      CVD_REPORT_MODEL: ${CVD_REPORT_MODEL:-}
+      CVD_REPORT_DIR: /data/reports
+      EMAIL_OFFLINE_SECONDS: ${EMAIL_OFFLINE_SECONDS:-60}
+      EMAIL_RECOVERY_SECONDS: ${EMAIL_RECOVERY_SECONDS:-10}
+    secrets: [leader_password, recovery_key]
+    volumes: [backend-data:/data]
+    ports: ["127.0.0.1:18080:8080"]
+    depends_on:
+      {
+        postgres: { condition: service_healthy },
+        timescaledb: { condition: service_healthy },
+        kafka: { condition: service_healthy },
+        redis: { condition: service_healthy },
+        mqtt: { condition: service_healthy },
+      }
+    healthcheck:
+      {
+        test: [CMD-SHELL, "wget -qO- http://localhost:8080/actuator/health"],
+        interval: 5s,
+        timeout: 3s,
+        retries: 30,
+      }
+  frontend:
+    build: ./frontend
+    ports: ["127.0.0.1:18000:80"]
+    depends_on: { backend: { condition: service_healthy } }
+volumes:
+  pg-data:
+  ts-data:
+  redis-data:
+  mqtt-data:
+  kafka-data:
+  sim-data:
+  gateway-data:
+  backend-data:
+
+  sim-02-data:
+  gateway-02-data:
+  sim-03-data:
+  gateway-03-data:
+  sim-04-data:
+  gateway-04-data:
+  sim-05-data:
+  gateway-05-data:
+  sim-06-data:
+  gateway-06-data:
+  sim-07-data:
+  gateway-07-data:
+  sim-08-data:
+  gateway-08-data:
+  sim-09-data:
+  gateway-09-data:
+  sim-10-data:
+  gateway-10-data:
+
+secrets:
+  recovery_key:
+    file: ${CVD_RECOVERY_KEY_FILE:-./.runtime/secrets/recovery-key}
+  leader_password:
+    file: ${CVD_LEADER_PASSWORD_FILE:-./.runtime/secrets/leader-password}

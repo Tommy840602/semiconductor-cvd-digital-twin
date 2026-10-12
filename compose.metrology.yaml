@@ -1,0 +1,52 @@
+services:
+  backend:
+    environment:
+      METROLOGY_ENABLED: ${METROLOGY_ENABLED:-false}
+  metrology:
+    build:
+      context: .
+      dockerfile: metrology/Dockerfile
+    image: cvd-kla-metrology
+    restart: unless-stopped
+    environment:
+      DATA_DIR: /data
+    volumes:
+      - metrology-data:/data
+    secrets:
+      - control_key
+    healthcheck:
+      test: [CMD-SHELL, 'wget -qO- http://localhost:8081/health']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  metrology-gateway:
+    image: cvd-secs-gateway
+    restart: unless-stopped
+    environment:
+      CVD_PROTOCOL: secs
+      EQUIPMENT_ID: KLA-SIM-01
+      HSMS_ENDPOINT: metrology:5000
+      MQTT_URL: tcp://mqtt:1883
+      DATA_DIR: /data
+    volumes:
+      - metrology-gateway-data:/data
+    secrets:
+      - control_key
+      - source: kla_mqtt
+        target: mqtt_password
+    depends_on:
+      metrology:
+        condition: service_healthy
+      mqtt:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD-SHELL, 'wget -qO- http://localhost:8082/health']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+volumes:
+  metrology-data:
+  metrology-gateway-data:
+secrets:
+  kla_mqtt:
+    file: .runtime/secrets/secs-production/KLA-SIM-01

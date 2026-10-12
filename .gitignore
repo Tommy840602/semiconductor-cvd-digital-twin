@@ -1,0 +1,26 @@
+node_modules/
+frontend/dist/
+backend/target/
+.env
+.runtime/
+*.log
+simulator/simulator
+gateway/gateway
+__pycache__/
+backups/
+
+# Credentials, local settings, runtime data and generated files
+.env.*
+!.env.example
+.vscode/
+.DS_Store
+**/secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.sqlite
+*.sqlite3
+*.dump

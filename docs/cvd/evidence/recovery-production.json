@@ -1,0 +1,12 @@
+{
+  "modelVersion": 5,
+  "lotCount": 17,
+  "waferCount": 425,
+  "users": 3,
+  "allDepartmentsUnassigned": true,
+  "recipePreserved": true,
+  "waferStatePreserved": true,
+  "passwordHashesPreserved": true,
+  "historyPreserved": true,
+  "clockRestored": true
+}

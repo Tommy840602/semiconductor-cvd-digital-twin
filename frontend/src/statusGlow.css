@@ -1,0 +1,8 @@
+.status-glow{--status-color:#91a2a5;--status-period:2s;color:var(--status-color)}
+.status-glow[data-status=processing],.status-glow[data-status=paused],.status-glow[data-status=fault],.status-glow[data-status=stale]{animation:status-glow var(--status-period) ease-in-out infinite}
+.status-dot{display:inline-block;width:12px!important;height:12px!important;flex-shrink:0;border-radius:50%;background:var(--status-color);box-shadow:0 0 10px var(--status-color)}
+.status-outline{stroke:var(--status-color)!important;filter:drop-shadow(0 0 2px var(--status-color))}
+.status-outline[data-status=processing],.status-outline[data-status=paused],.status-outline[data-status=fault],.status-outline[data-status=stale]{stroke-width:4px!important}
+.status-outline.selected{stroke-width:5px!important;stroke-dasharray:9 3}
+@keyframes status-glow{0%,100%{filter:drop-shadow(0 0 2px var(--status-color)) brightness(.8)}50%{filter:drop-shadow(0 0 10px var(--status-color)) drop-shadow(0 0 4px var(--status-color)) brightness(1.15)}}
+@media(prefers-reduced-motion:reduce){.status-glow{animation:none!important;filter:drop-shadow(0 0 3px var(--status-color))}}

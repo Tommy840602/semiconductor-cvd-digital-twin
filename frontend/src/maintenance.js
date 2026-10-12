@@ -1,0 +1,3 @@
+import {t,number} from './i18n.js';
+export const maintenanceLabels={get draining(){return t('maintDraining')},get maintenance(){return t('maintActive')},get waiting(){return t('maintWaiting')},get qualifying(){return t('maintQualifying')},get failed(){return t('maintFailed')},get passed(){return t('maintPassed')},get ready(){return t('maintReady')},get released(){return t('maintReleased')}};
+export function maintenanceLabel(m){return m&&m.phase!=='released' ? ({'awaiting-kla':t('dummyWaiting'),'awaiting-pe':t('dummyPE'),approved:t('dummyApproved'),rejected:t('dummyRejected')}[m.qualificationStatus]||maintenanceLabels[m.phase]||t('maintUnknown')) : '';}

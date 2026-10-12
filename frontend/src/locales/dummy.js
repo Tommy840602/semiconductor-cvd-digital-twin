@@ -1,0 +1,5 @@
+export default {
+'zh-TW':{dummyTitle:'Dummy KLA 與 PE 確認',dummyWaiting:'等待四片 KLA 合格',dummyPE:'等待 PE 確認',dummyApproved:'PE 已確認，可手動恢復',dummyRejected:'PE 退回，需新輪測試',dummyConfirm:'PE 確認合格',dummyReject:'退回重測',dummyReason:'確認意見／退回原因',dummyMap:'查看晶圓量測',dummyRefresh:'更新量測狀態',dummyRetest:'開始新輪 Dummy 測試'},
+en:{dummyTitle:'Dummy KLA and PE confirmation',dummyWaiting:'Waiting for four passing KLA results',dummyPE:'Awaiting PE confirmation',dummyApproved:'PE confirmed; manual resume required',dummyRejected:'PE rejected; new qualification required',dummyConfirm:'PE confirm qualification',dummyReject:'Reject for retest',dummyReason:'Comment / rejection reason',dummyMap:'View wafer measurement',dummyRefresh:'Refresh measurements',dummyRetest:'Start new dummy qualification'},
+ja:{dummyTitle:'Dummy KLA と PE 確認',dummyWaiting:'4枚の KLA 合格待ち',dummyPE:'PE 確認待ち',dummyApproved:'PE 確認済み・手動復帰待ち',dummyRejected:'PE 差戻し・再検証が必要',dummyConfirm:'PE 合格確認',dummyReject:'再検証へ差戻し',dummyReason:'コメント／差戻し理由',dummyMap:'ウェーハ測定を表示',dummyRefresh:'測定状態更新',dummyRetest:'新しい Dummy 検証を開始'}
+};

@@ -1,0 +1,541 @@
+{
+  "services": {
+    "backend": {
+      "image": "cvd-secs-backend",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs"
+      },
+      "secrets": [
+        {
+          "source": "leader_password",
+          "target": "/run/secrets/leader_password"
+        },
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "frontend": {
+      "image": "cvd-secs-frontend"
+    },
+    "gateway": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-01",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-02": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-02:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-02",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-03": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-03:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-03",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-04": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-04:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-04",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-05": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-05:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-05",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-06": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-06:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-06",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-07": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-07:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-07",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-08": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-08:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-08",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-09": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-09:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-09",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "gateway-10": {
+      "image": "cvd-secs-gateway",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "HSMS_ENDPOINT": "simulator-10:5000",
+        "OPC_ENDPOINT": null,
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "TEL-CVDTIN-08A-10",
+          "target": "mqtt_password"
+        }
+      ]
+    },
+    "mqtt": {
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "./.runtime/secrets/secs-production/mosquitto.conf",
+          "target": "/mosquitto/config/mosquitto.conf",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./.runtime/secrets/secs-production/passwords",
+          "target": "/mosquitto/config/passwords",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "./.runtime/secrets/secs-production/acl",
+          "target": "/mosquitto/config/acl",
+          "read_only": true
+        },
+        {
+          "type": "volume",
+          "source": "mqtt-data",
+          "target": "/mosquitto/data"
+        }
+      ],
+      "secrets": [
+        {
+          "source": "mqtt_health",
+          "target": "mqtt_health"
+        }
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "mosquitto_pub -h localhost -u health -P \"$(cat /run/secrets/mqtt_health)\" -t health/mqtt -m ok"
+        ],
+        "timeout": "3s",
+        "interval": "3s",
+        "retries": 30
+      }
+    },
+    "simulator": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-02": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-03": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-04": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-05": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-06": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-07": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-08": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-09": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "simulator-10": {
+      "image": "cvd-secs-simulator",
+      "restart": "unless-stopped",
+      "environment": {
+        "CVD_PROTOCOL": "secs",
+        "GOMAXPROCS": "${CVD_GO_PROCS:-1}"
+      },
+      "secrets": [
+        {
+          "source": "recovery_key",
+          "target": "/run/secrets/recovery_key"
+        },
+        {
+          "source": "control_key",
+          "target": "control_key"
+        }
+      ]
+    },
+    "bridge": {
+      "image": "cvd-secs-bridge",
+      "environment": {
+        "DATA_DIR": "/data",
+        "MQTT_URL": "tcp://mqtt:1883",
+        "KAFKA_BOOTSTRAP": "kafka:9092"
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "bridge-data",
+          "target": "/data"
+        }
+      ],
+      "secrets": [
+        {
+          "source": "control_key",
+          "target": "control_key"
+        },
+        {
+          "source": "mqtt_bridge",
+          "target": "mqtt_password"
+        }
+      ],
+      "depends_on": {
+        "mqtt": {
+          "condition": "service_healthy"
+        },
+        "kafka": {
+          "condition": "service_healthy"
+        }
+      },
+      "restart": "unless-stopped",
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "wget -qO- http://localhost:8083/health"
+        ],
+        "interval": "3s",
+        "timeout": "3s",
+        "retries": 30
+      },
+      "build": {
+        "context": ".",
+        "dockerfile": "bridge/Dockerfile"
+      }
+    }
+  },
+  "secrets": {
+    "control_key": {
+      "file": "./.runtime/secrets/secs-production/control-key"
+    },
+    "TEL-CVDTIN-08A-01": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-01"
+    },
+    "TEL-CVDTIN-08A-02": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-02"
+    },
+    "TEL-CVDTIN-08A-03": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-03"
+    },
+    "TEL-CVDTIN-08A-04": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-04"
+    },
+    "TEL-CVDTIN-08A-05": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-05"
+    },
+    "TEL-CVDTIN-08A-06": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-06"
+    },
+    "TEL-CVDTIN-08A-07": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-07"
+    },
+    "TEL-CVDTIN-08A-08": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-08"
+    },
+    "TEL-CVDTIN-08A-09": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-09"
+    },
+    "TEL-CVDTIN-08A-10": {
+      "file": "./.runtime/secrets/secs-production/TEL-CVDTIN-08A-10"
+    },
+    "mqtt_health": {
+      "file": "./.runtime/secrets/secs-production/health"
+    },
+    "mqtt_bridge": {
+      "file": "./.runtime/secrets/secs-production/cvd-bridge"
+    }
+  },
+  "volumes": {
+    "bridge-data": {}
+  }
+}

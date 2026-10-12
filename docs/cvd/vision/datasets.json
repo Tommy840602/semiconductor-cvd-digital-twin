@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-02",
+  "selected": {
+    "id": "muhammedjunayed/wm811k-silicon-wafer-map-dataset-image",
+    "version": 1,
+    "license": "CC BY-SA 4.0",
+    "description": "This dataset contains a subset of the **WM811k Silicon Wafer Map Dataset** originally taken from http://mirlab.org/dataSet/public/, designed for defect classification in semiconductor manufacturing. The dataset is organized into nine defect categories and is complemented by a MATLAB implementation of a Convolutional Neural Network (CNN) for defect recognition.\n\nIt supports research on identifying and classifying manufacturing defects in silicon wafers. The dataset is part of the research presented in the paper:\n**Enhancing Defect Recognition: Convolutional Neural Networks for Silicon Wafer Map Analysis**\n\n📄 Read the Paper on [IEEE Xplore](https://ieeexplore.ieee.org/document/10561853/authors#authors) DOI: 10.1109/ICAEEE62219.2024.10561853\n\n**Key Features**\n**Defect Categories:** Center, Donut, Edge Local, Edge Ring, Local, Near Full, None, Random, Scratch.\n\n**Image Format:** 32x32 pixels .png images.\n\n**Total Images:** 902 (sampled subset of WM811k).\n\n\n",
+    "archiveSHA256": "2c21af753f39668d253fd7d2e36e0010b6058224ea443dece77f9f1c150afb6f",
+    "downloadedBytes": 1006403,
+    "availableSamples": 902,
+    "importedMapSamples": 180,
+    "syntheticSurfaceSamples": 40
+  },
+  "gaps": [
+    {
+      "dataset": "qingyi/wm811k-wafer-map",
+      "reason": "原始 PKL 約 2.1 GB；本機磁碟有限，先採同源有界影像子集，保留渲染損失限制。"
+    },
+    {
+      "dataset": "co1d7era/mixedtype-wafer-defect-datasets",
+      "reason": "API 授權為 Data files © Original Authors，未確認展示再散布條款，未匯入。"
+    },
+    {
+      "dataset": "ISSM AI Technology Contest 2020",
+      "reason": "競賽頁要求邀請及接受條款，未取得可展示影像；表面資料以合成補足。"
+    }
+  ]
+}

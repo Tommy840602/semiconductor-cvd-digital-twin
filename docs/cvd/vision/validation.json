@@ -1,0 +1,107 @@
+{
+  "equipmentCount": 10,
+  "jobs": 20,
+  "complete": 20,
+  "seconds": 28.86,
+  "commandsCreated": 0,
+  "inputModes": "dataset-replay|33\nsynthetic|33",
+  "ids": [
+    "a0a6d618-7f46-4235-8cd2-3947da73fe3e",
+    "5d17fa18-2012-4461-a9d8-e1e7ab10d3a8",
+    "96645fea-2651-4d1f-9b6b-456d17718b52",
+    "bfb864e2-c739-4056-9e73-4bfb97fe06f4",
+    "39f861a2-fcb2-4608-a240-c941d234aaaa",
+    "f1a87e3b-62a3-45e2-9081-7597edd99b49",
+    "bc77a371-e7bd-498c-bf2b-e790a3e1bfff",
+    "f3fa2e59-cfcd-4ae7-a0c7-69a4b2c0d529",
+    "090febb5-466b-42f8-80bc-f1fae1c677e5",
+    "8344b04f-5dfb-4dc8-a51f-26dd6b7cbef5"
+  ],
+  "workerCpuLimit": 0.5,
+  "restartProof": {
+    "runId": "8aca02eb-fb63-4b98-91c9-2732544d70c8",
+    "queuedBeforeRestart": 2,
+    "completedAfterBackendAndWorkerRestart": 2,
+    "sourceInputPreserved": true
+  },
+  "productionDeployment": {
+    "date": "2026-10-02",
+    "uiLoginAndMobilePassed": true,
+    "controlCommandsSent": 2,
+    "accountsAndRecipeHashesPreserved": true,
+    "acceptanceComplete": true,
+    "blocker": null,
+    "backupScope": "Schema and accounts/recipes/KLA critical tables only; restored and hashes verified. No full-history restore claim.",
+    "productionDetailPanelVerified": true,
+    "bridgeRecovery": {
+      "peakPendingApprox": 14500,
+      "backlogBytesApprox": 1700000000,
+      "pendingAfter": 0,
+      "snapshotAgeSecondsMin": 1,
+      "snapshotAgeSecondsMax": 3,
+      "allHealthChecksPassed": true,
+      "tests": "go test -race ./... (bridge)",
+      "productionControlCommandsSent": 0
+    },
+    "currentPauseState": "Tool 01 resumed for the explicitly authorized demonstration lot; other nine tools remain paused. The 25-wafer demonstration lot is complete.",
+    "demonstration": {
+      "jobsFailed": 0,
+      "reviewAlerts": 21,
+      "jobsCompleted": 50,
+      "demonstrationLot": {
+        "id": "TEL-CVDTIN-08A-01-OPENCV-DEMO-398ec803-27b9-496d-8655-2902d8edba65",
+        "phase": "complete",
+        "waferCount": 25,
+        "successCount": 25
+      },
+      "inspectionGroups": 25,
+      "originalLotCount": 47,
+      "metrologyCompleted": 25,
+      "demoCVDCommandCount": 2,
+      "visionCompleteGroups": 25,
+      "maxSnapshotAgeSeconds": 0.681191,
+      "otherNineRemainPaused": true,
+      "metrologyPointsPerWafer": 49,
+      "originalLotCompleteCount": 47,
+      "ui": {
+        "lotId": "TEL-CVDTIN-08A-01-OPENCV-DEMO-398ec803-27b9-496d-8655-2902d8edba65",
+        "measurementId": "b6d323a8-8aed-46e2-b279-b3326392d16e",
+        "waferId": "TEL-CVDTIN-08A-01-OPENCV-DEMO-398ec803-27b9-496d-8655-2902d8edba65-W25",
+        "runId": "c88ad364-98fc-49d4-b28b-c30b1c356126",
+        "completedKinds": [
+          "surface",
+          "map"
+        ],
+        "sourceModes": [
+          "synthetic",
+          "dataset-replay"
+        ],
+        "privateImageAuth": true,
+        "originalAndOverlay": true,
+        "mapAndSurfaceUI": true,
+        "mobile": true,
+        "jsErrors": 0,
+        "controlCommandsSent": 0
+      },
+      "workerWithdrawalRestore": {
+        "previousJobsPreserved": 36,
+        "queuedDuringWorkerWithdrawal": 4,
+        "queuedStatesAfterRestore": {
+          "611d25a0-4c1d-4783-a9bc-bd2428423d33": "completed",
+          "1edbb0ad-3429-45ce-95e8-2a0765f9c67a": "completed",
+          "63af7e3b-1225-4003-be13-6b83eab0430f": "completed",
+          "4e9ab41e-fc3c-413f-a542-c952aa620612": "completed"
+        },
+        "frozenInputHashesMatch": true,
+        "withdrawnComponent": "vision worker only",
+        "backendFrontendImageRollbackPerformed": false
+      }
+    },
+    "backupAndRollbackLimits": {
+      "fullHistoryRestorePerformed": false,
+      "schemaAndCriticalTablesRestored": true,
+      "backendFrontendOldImageRollbackPerformed": false,
+      "workerWithdrawalRestoredAndQueuedInputsPreserved": true
+    }
+  }
+}

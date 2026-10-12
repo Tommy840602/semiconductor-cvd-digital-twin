@@ -1,0 +1,5 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {distribution,mergeTimeline,flagsText,duration} from './statistics.js';
+test('unknown remains in denominator, including zero and entirely unknown',()=>{assert.equal(distribution({processing:90,unknown:10}).find(x=>x.key==='unknown').percent,10);assert.equal(distribution({unknown:5}).find(x=>x.key==='unknown').percent,100);assert.ok(distribution({}).every(x=>x.percent===0));});
+test('merge exact adjacent compatible intervals without mutating report',()=>{const a=[{start:'a',end:'b',state:'mixed',flags:[1],states:{processing:10,idle:20}},{start:'b',end:'c',state:'mixed',flags:[1],states:{processing:3,idle:27}},{start:'c',end:'d',state:'mixed',flags:[2],states:{idle:30}}];const b=mergeTimeline(a);assert.equal(b.length,2);assert.equal(b[0].states.processing,13);assert.equal(a[0].states.processing,10);});
+test('secondary fault and maintenance flags survive classification',()=>{const s=flagsText([1|16|64]);assert.match(s,/PM1 故障/);assert.match(s,/正式派片暫停/);assert.match(s,/待排空/);assert.equal(duration(0),'0 秒');});

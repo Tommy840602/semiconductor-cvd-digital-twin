@@ -1,0 +1,186 @@
+{
+  "algorithmVersion": "opencv-rules-v1",
+  "trained": false,
+  "splitPolicy": "sha256(source group) % 5; no derived sample crosses group",
+  "note": "Descriptive evaluation on a small sampled subset; no production accuracy claim.",
+  "reports": {
+    "dataset-replay": {
+      "samples": 180,
+      "splits": {
+        "test": 131,
+        "validation": 49
+      },
+      "classes": {
+        "center": {
+          "tp": 3,
+          "fp": 19,
+          "fn": 17,
+          "precision": 0.13636363636363635,
+          "recall": 0.15,
+          "f1": 0.14285714285714282
+        },
+        "scratch": {
+          "tp": 1,
+          "fp": 22,
+          "fn": 19,
+          "precision": 0.043478260869565216,
+          "recall": 0.05,
+          "f1": 0.046511627906976744
+        },
+        "edge-loc": {
+          "tp": 12,
+          "fp": 27,
+          "fn": 8,
+          "precision": 0.3076923076923077,
+          "recall": 0.6,
+          "f1": 0.4067796610169492
+        },
+        "uncertain": {
+          "tp": 0,
+          "fp": 28,
+          "fn": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0
+        },
+        "random": {
+          "tp": 3,
+          "fp": 1,
+          "fn": 17,
+          "precision": 0.75,
+          "recall": 0.15,
+          "f1": 0.24999999999999997
+        },
+        "none": {
+          "tp": 17,
+          "fp": 44,
+          "fn": 3,
+          "precision": 0.2786885245901639,
+          "recall": 0.85,
+          "f1": 0.41975308641975306
+        },
+        "donut": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 17,
+          "precision": 1.0,
+          "recall": 0.15,
+          "f1": 0.2608695652173913
+        },
+        "loc": {
+          "tp": 3,
+          "fp": 2,
+          "fn": 17,
+          "precision": 0.6,
+          "recall": 0.15,
+          "f1": 0.24
+        },
+        "edge-ring": {
+          "tp": 0,
+          "fp": 5,
+          "fn": 20,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0
+        },
+        "near-full": {
+          "tp": 13,
+          "fp": 0,
+          "fn": 7,
+          "precision": 1.0,
+          "recall": 0.65,
+          "f1": 0.787878787878788
+        }
+      },
+      "confusion": {
+        "center -> center": 2,
+        "center -> edge-loc+scratch": 1,
+        "center -> uncertain": 6,
+        "center -> random": 1,
+        "center -> none": 8,
+        "center -> center+scratch": 1,
+        "center -> scratch": 1,
+        "donut -> center": 8,
+        "donut -> donut": 2,
+        "donut -> loc": 2,
+        "donut -> center+scratch": 2,
+        "donut -> uncertain": 1,
+        "donut -> none": 4,
+        "donut -> center+donut": 1,
+        "edge-loc -> uncertain": 5,
+        "edge-loc -> none": 3,
+        "edge-loc -> edge-loc": 2,
+        "edge-loc -> edge-loc+scratch": 10,
+        "edge-ring -> edge-loc": 12,
+        "edge-ring -> edge-loc+scratch": 7,
+        "edge-ring -> uncertain": 1,
+        "loc -> none": 14,
+        "loc -> loc": 3,
+        "loc -> edge-loc": 1,
+        "loc -> center": 1,
+        "loc -> uncertain": 1,
+        "scratch -> none": 15,
+        "scratch -> scratch": 1,
+        "scratch -> uncertain": 3,
+        "scratch -> edge-loc": 1,
+        "near-full -> edge-ring": 4,
+        "near-full -> near-full": 13,
+        "near-full -> center": 2,
+        "near-full -> center+edge-ring": 1,
+        "none -> uncertain": 3,
+        "none -> none": 17,
+        "random -> center": 4,
+        "random -> edge-loc": 5,
+        "random -> random": 3,
+        "random -> uncertain": 8
+      },
+      "meanMaskIoU": null
+    },
+    "synthetic": {
+      "samples": 40,
+      "splits": {
+        "test": 32,
+        "validation": 8
+      },
+      "classes": {
+        "none": {
+          "tp": 10,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "scratch": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "particle": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        },
+        "spot": {
+          "tp": 30,
+          "fp": 0,
+          "fn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0
+        }
+      },
+      "confusion": {
+        "none -> none": 10,
+        "particle+scratch+spot -> particle+scratch+spot": 30
+      },
+      "meanMaskIoU": 1.0
+    }
+  }
+}

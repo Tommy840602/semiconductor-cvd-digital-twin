@@ -1,0 +1,1 @@
+{"schemaVersion":1,"eventId":"fixture-1","equipmentId":"CVD-01","sourceEpoch":"fixture","sequence":1,"sourceTime":"2026-09-15T00:00:00Z","quality":"good","lotId":"L1","waferId":"L1-W01","kind":"movement-complete","payload":{"from":"LL1","to":"PM1","robot":"VAC"}}

@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "eventId": "fixture-process-1",
+  "equipmentId": "CVD-01",
+  "sourceEpoch": "fixture",
+  "sequence": 1,
+  "sourceTime": "2026-09-15T00:00:00Z",
+  "quality": "good",
+  "lotId": "L1",
+  "waferId": "L1-W01",
+  "kind": "telemetry",
+  "payload": {
+    "chambers": [
+      {
+        "id": "PM1",
+        "waferId": "L1-W01",
+        "processRunId": "L1-W01/1/synthetic-tin-v1",
+        "temperature": 395,
+        "targetTemperature": 400,
+        "pressure": 2,
+        "targetPressure": 2,
+        "flow": 140,
+        "targetFlow": 140,
+        "gasChannels": {
+          "precursor": {
+            "target": 40,
+            "actual": 40
+          },
+          "reactant": {
+            "target": 70,
+            "actual": 70
+          },
+          "carrier": {
+            "target": 30,
+            "actual": 30
+          },
+          "purge": {
+            "target": 0,
+            "actual": 0
+          }
+        },
+        "processTelemetry": {
+          "telemetryRevision": 1,
+          "modelRevision": "synthetic-tin-v1",
+          "processRunId": "L1-W01/1/synthetic-tin-v1",
+          "phase": "deposition",
+          "phaseProgress": 0.5,
+          "runProgress": 0.6,
+          "heaterPowerPct": 20,
+          "temperatureDeviationC": -5,
+          "thicknessNm": 5,
+          "targetThicknessNm": 10,
+          "depositionRateNmPerSecond": 1,
+          "uniformityPct": 1,
+          "quality": "not-evaluated"
+        }
+      }
+    ],
+    "locks": [
+      {
+        "id": "LL1",
+        "pressure": 10,
+        "pumpState": "pumping",
+        "valveOpeningPct": 100
+      }
+    ]
+  }
+}

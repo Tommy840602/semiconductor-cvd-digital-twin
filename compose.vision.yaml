@@ -1,0 +1,49 @@
+services:
+  backend:
+    environment:
+      VISION_ENABLED: ${VISION_ENABLED:-false}
+      VISION_TOKEN_FILE: /run/secrets/vision_token
+      VISION_CATALOG: /vision/catalog
+      VISION_IMAGES: /vision/images
+    secrets:
+      - vision_token
+    volumes:
+      - ./vision/catalog:/vision/catalog:ro
+      - vision-images:/vision/images
+  vision:
+    build:
+      context: .
+      dockerfile: vision/Dockerfile
+    image: cvd-opencv-vision
+    restart: unless-stopped
+    user: "0:0"
+    environment:
+      VISION_BACKEND: http://backend:8080
+      VISION_TOKEN_FILE: /run/secrets/vision_token
+      VISION_IMAGES: /images
+      KAFKA_SERVERS: kafka:9092
+    secrets:
+      - vision_token
+    volumes:
+      - vision-images:/images
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 64
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import os,time; assert time.time()-os.stat('/tmp/vision-heartbeat').st_mtime<60"]
+      interval: 15s
+      timeout: 3s
+      retries: 4
+volumes:
+  vision-images:
+secrets:
+  vision_token:
+    file: .runtime/secrets/vision-token

@@ -1,0 +1,1 @@
+{"equipmentId":"TEL-CVDTIN-08A-01","kind":"telemetry","sourceTime":"2026-09-19T00:00:01Z","quality":"good","payload":{"chambers":[]},"note":"舊版本沒有 statistics 區間證據；狀態與結案完整性均未知，不沿用快照補值。"}
