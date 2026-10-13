@@ -50,7 +50,7 @@ jobs:
           cache-dependency-path: backend/pom.xml
       - name: Test
         working-directory: backend
-        run: ./mvnw --batch-mode test
+        run: mvn --batch-mode test
 
   frontend-test-build:
     name: Frontend test and build
