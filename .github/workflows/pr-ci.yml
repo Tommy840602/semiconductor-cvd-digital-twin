@@ -1,0 +1,93 @@
+name: PR CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  GO_VERSION: "1.26.0"
+  JAVA_VERSION: "21"
+  NODE_VERSION: "22"
+
+jobs:
+  go-test:
+    name: Go race tests (${{ matrix.module }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [protocol, simulator, gateway, bridge]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v6
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: ${{ matrix.module }}/go.sum
+      - name: Test with race detector
+        working-directory: ${{ matrix.module }}
+        run: go test -race ./...
+
+  backend-test:
+    name: Backend Maven tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - name: Test
+        working-directory: backend
+        run: mvn --batch-mode test
+
+  frontend-test-build:
+    name: Frontend test and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install locked dependencies
+        working-directory: frontend
+        run: npm ci
+      - name: Test
+        working-directory: frontend
+        run: npm test
+      - name: Build
+        working-directory: frontend
+        run: npm run build
+
+  compose-validate:
+    name: Docker Compose validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare non-secret validation placeholders
+        run: |
+          mkdir -p .runtime/secrets/secs-production
+          : > .runtime/secrets/secs-production/mosquitto.conf
+          : > .runtime/secrets/secs-production/passwords
+          : > .runtime/secrets/secs-production/acl
+          mkdir -p .runtime/secrets
+          : > .runtime/secrets/leader-password
+          : > .runtime/secrets/recovery-key
+          : > .runtime/secrets/control-key
+      - name: Validate compose model
+        run: docker compose -f compose.yaml -f compose.secs.yaml config --quiet
